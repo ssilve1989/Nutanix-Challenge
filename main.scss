@@ -49,6 +49,22 @@ body{
   }
 }
 
+//ratings
+.rating {
+  unicode-bidi: bidi-override;
+  direction: ltr;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span.filled:before{
+  content: "\2605";
+  position: absolute;
+  color: red;
+}
+
 .half-width {
   width: 50%;
   float: left;

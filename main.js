@@ -31,6 +31,10 @@ var localStorageEnabled = typeof(Storage) !== "undefined";
         $scope.deals = [];
         $scope.animationsEnabled = true;
 
+        $scope.fillStar = function(index, rating){
+            return (index <= rating) ? 'filled' : '';
+        };
+
         $http.get(DEALS_API_URL).success(function(data){
             $scope.deals = data.deals;
 

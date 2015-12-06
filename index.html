@@ -40,10 +40,16 @@
                     <figure class="item-img">
                         <img ng-src="{{deal.image}}" alt="{{deal.name}}">
                         <span class="discount">{{deal.discount}}</span>
+                        <span class="rating">
+
+                        </span>
                     </figure>
                     <div class="item-price">
                         <p><strong>Actual Price:&nbsp;</strong>${{deal.actual_price}}</p>
                         <p><strong>Final Price:&nbsp;</strong>${{deal.final_price}}</p>
+                        <p class="rating">
+                            <strong>Rating: </strong><span ng-repeat="i in [1,2,3,4,5]" ng-class="fillStar(i, deal.rating)">&#9734;</span>
+                        </p>
                     </div>
                 </div>
                 <div class="item-actions">
