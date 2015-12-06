@@ -1,0 +1,217 @@
+@mixin clear($direction){
+  clear: $direction;
+  content: "";
+  display: block;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body{
+  font-size: 13px;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+}
+
+//BootStrap Overrides
+.navbar-inverse .navbar-brand {
+  color: #ffffff;
+  font-size: 1.75em;
+  img {
+    display: inline-block; //We are careful about extra whitespace
+  }
+  span{
+    vertical-align: middle;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .navbar{
+    border-radius: 0;
+  }
+}
+
+#header, #footer{
+  color: #ffffff;
+}
+
+#footer{
+  background-color: #000;
+  padding: 1em;
+}
+
+#social-links{
+  color: #FFFFFF;
+  a{
+    color: inherit;
+  }
+}
+
+.half-width {
+  width: 50%;
+  float: left;
+}
+
+.modal-content{
+  .item {
+    border:0;
+  }
+  .item-img{
+    float: none;
+    img{
+      height: auto;
+    }
+  }
+  .discount {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    font-size: 4em;
+    line-height: 130px;
+  }
+}
+
+.item{
+  position: relative;
+  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 2em;
+  &:after {
+    @include clear(both);
+  }
+  h1{
+    font-size: 2em;
+  }
+}
+
+.item-info{
+  min-height: 150px;
+  margin-bottom: 1em;
+  &:after{
+    @include clear(both);
+  }
+}
+
+.item-actions{
+  .btn{
+    width: 48%;
+    margin-right: 2%;
+    float: left;
+  }
+}
+
+.item-price{
+  margin-bottom: 1em;
+  text-align: center;
+  p{
+    font-size: 1.25em;
+  }
+}
+
+.item-img{
+  //float: left;
+  padding: 0 1em;
+  img {
+    height: 150px;
+    width: auto;
+    max-width: 100%;
+  }
+  .discount{
+    float:right;
+  }
+}
+
+.discount {
+  margin-bottom: 1em;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 50%;
+  color: #FFFFFF;
+  display: inline-block;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  background: rgb(180,227,145); /* Old browsers */
+  background: -moz-linear-gradient(45deg,  rgba(180,227,145,1) 0%, rgba(97,196,25,1) 50%, rgba(180,227,145,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+@media screen and (max-width: 498px){
+  .item-actions{
+    .btn{
+      width: 100%;
+      margin: 0 0 1em 0;
+      float: none;
+    }
+  }
+
+  .item-img{
+    float: none;
+    text-align: left;
+    margin-bottom: 1em;
+  }
+
+  .discount {
+    position: absolute;
+    top: 3em;
+    right: 1em;
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .discount {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    font-size: 3em;
+    margin: 0;
+  }
+  .item-img{
+    margin-bottom: 2em;
+  }
+}
+@media screen and (max-width: 767px){
+  .item-price{
+    p{
+      width: 48%;
+      margin-right: 1%;
+      float: left;
+    }
+  }
+  .discount {
+    width: 85px;
+    height: 85px;
+    line-height: 80px;
+    font-size: 2em;
+  }
+  .modal-content{
+    .discount {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50px;
+      height: 50px;
+      font-size: 1em;
+      line-height: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: 410px){
+  .item-price {
+    p{
+      float: none;
+      width: 100%;
+      margin: 0 0 1em 0;
+    }
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutanix Deals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body ng-app="DealsApp" ng-controller="DealsController">
+<header id="header">
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <img src="http://www.nutanix.com/wp-content/uploads/2014/11/logo-ntnx-lp-color-variant.png"
+                         alt="Nutanix">
+                    <span><em>Deals</em></span>
+                </a>
+            </div>
+            <div class="pull-right">
+                API Hits : {{apiHits}}
+            </div>
+        </div>
+    </div>
+</header>
+<main class="container" ngCloak>
+    <section class="row">
+        <div class="col-lg-4 col-md-6" ng-repeat="deal in deals">
+            <article class="item">
+                <h1>{{deal.name}}</h1>
+
+                <p>Sold by : <em>{{deal.provider}}</em></p>
+
+                <div class="item-info">
+                    <figure class="item-img">
+                        <img ng-src="{{deal.image}}" alt="{{deal.name}}">
+                        <span class="discount">{{deal.discount}}</span>
+                    </figure>
+                    <div class="item-price">
+                        <p><strong>Actual Price:&nbsp;</strong>${{deal.actual_price}}</p>
+                        <p><strong>Final Price:&nbsp;</strong>${{deal.final_price}}</p>
+                    </div>
+                </div>
+                <div class="item-actions">
+                    <button class="btn btn-success" ng-click="open(deal)">View Deal</button>
+                    <button class="btn btn-primary" ng-click="like(deal)"><i class="fa fa-thumbs-up"></i>&nbsp;Like Deal
+                        <span ng-show="deal.likes > 0">({{deal.likes}} like)</span></button>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!--templates-->
+    <script type="text/ng-template" id="modalContent.html">
+        <div class="modal-header">
+            <h1>{{deal.name}}</h1>
+        </div>
+        <div class="modal-body container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="item">
+                        <p>Sold by : <em>{{deal.provider}}</em></p>
+
+                        <div class="item-info">
+                            <figure class="item-img text-center">
+                                <img ng-src="{{deal.image}}" alt="{{deal.name}}">
+                            </figure>
+                            <div class="item-price text-center">
+                                <span class="discount">{{deal.discount}}</span>
+
+                                <p><strong>Actual Price:&nbsp;</strong>${{deal.actual_price}}</p>
+
+                                <p><strong>Final Price:&nbsp;</strong>${{deal.final_price}}</p>
+                            </div>
+                            <div class="item-description">
+                                <p>Lorem ipsum dolor sit amet, quod adipiscing voluptatum te qui, vim cu tamquam omittantur, ne ubique possit integre est. Quaeque reprimique adversarium no vel, augue zril sensibus ei qui. An amet saepe consectetuer vis, vis an iusto audiam. Ut solum assueverit eum, pri velit consetetur an. In utroque copiosae vim, unum oratio quidam cum ex. Cu per iudico partem essent. Ignota timeam imperdiet mei ei, vis ea alii harum vivendum.
+
+                                    Ad mei graeco singulis petentium. Vim dolorum graecis et. Eum ad nisl tacimates. Sensibus hendrerit eu usu, indoctum scriptorem mei eu. Vim mazim nihil fierent ea, mel ornatus incorrupte ea, cum ea dicit eleifend.
+
+                                    Per ad dicant deterruisset, eos ut prompta denique gloriatur. Laudem fierent ius ad, te etiam salutatus est. Eruditi nostrum per ea, no nibh mazim tempor pri. Errem scriptorem ne eam. An scribentur definitiones mei, scripta impedit nec id.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" ng-click="ok()">Get Deal</button>
+            <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</main>
+<footer id="footer" class="container-fluid">
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <ul id="social-links" class="list-inline">
+                <li><a href="http://www.linkedin.com/in/stevensilvestri" target="_blank"><i
+                        class="fa fa-4x fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/ssilve1989" target="_blank"><i class="fa fa-4x fa-github"></i></a></li>
+                </li>
+            </ul>
+            <small>Steven Silvestri
+                <script>document.write(new Date().getFullYear().toString())</script></small>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="./main.js"></script>
+</body>
+</html>
